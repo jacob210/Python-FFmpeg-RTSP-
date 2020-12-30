@@ -21,16 +21,15 @@ pip install ffmpeg-python
  
 4、python代码：
 
-# -*- coding:UTF-8 -*-
+# -*- coding:UTF-8 _*-
 import ffmpeg
  
 host = '192.168.50.166/ch0_2.h264'
  
-# 子进程
+#子进程
 (
     ffmpeg
-        .input('rtsp://' + host, allowed_media_types='audio', rtsp_transport='tcp')['a']  
-# allowed_media_types='audio' 只读取音频流
+        .input('rtsp://' + host, allowed_media_types='audio', rtsp_transport='tcp')['a']  # allowed_media_types='audio' 只读取音频流
         .filter('volume', 5)  # 音量大小控制
         .output('saved_audio.aac', ac=1, ar='16k')  # ac是声道，ar是采样率
         .overwrite_output()
